@@ -1,0 +1,9 @@
+.main-table {
+    border-collapse: collapse;
+}
+
+.form-area {
+    background-color: #bfe6c9;
+    border-radius: 20px;
+    width: 30%;
+}

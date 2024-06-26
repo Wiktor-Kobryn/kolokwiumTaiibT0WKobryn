@@ -1,0 +1,47 @@
+<h3>KEYBOARDS</h3>
+<div>
+    <table border="1" class="main-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>MODEL</th>
+                <th>TYPE</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let k of keyboards">
+                <td>{{k.id}}</td>
+                <td>{{k.model}}</td>
+                <td>{{getKeyboardTypeText(k.type)}}</td>
+                <td><button (click)="deleteKeyboard(k)">del ></button></td>
+            </tr>   
+        </tbody>
+    </table>
+</div>
+
+<br />
+<div>
+    <div>
+        <button (click)="onAddSectionToggle()">
+            {{isAddFormVisible ? 'ANULUJ DODAWANIE KLAWIATURY' : 'DODAJ KLAWIATURĘ'}}
+        </button>
+    </div>
+    
+    <br />
+    <div *ngIf="isAddFormVisible" class="form-area">
+        <form (ngSubmit)="onKeyboardSubmit()">
+            <p>CREATE A NEW KEYBOARD</p>
+            <label>Model: </label>
+            <input id="model" name="model" type="text" minlength="1" [(ngModel)]="newKeyboard.model" />
+            <br />
+            <label>Type: </label> 
+            <input id="type" name="type" type="number" min="0" max="4" [(ngModel)]="newKeyboard.type" />{{getKeyboardTypeText(newKeyboard.type)}}
+            <br />
+            <input id="submit" name="submit" type="submit" value="ADD >"/>
+        </form>
+    </div>
+    
+</div>
+
+
